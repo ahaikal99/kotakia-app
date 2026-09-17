@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\AuditContext;
 use App\Http\Requests\RegisterRequest;
+use App\Mail\WelcomeMail;
 use App\Models\AccessControl;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
@@ -22,7 +25,12 @@ class AuthController extends Controller
 
     public function store(RegisterRequest $request): RedirectResponse
     {
-        $user = User::create($request->validated());
+        $user = DB::transaction(function () use ($request): User {
+            $user = User::create($request->validated());
+            Mail::mailer('receipts')->to($user->email)->queue(new WelcomeMail($user->name));
+
+            return $user;
+        });
         $request->attributes->set('audit.user_id', $user->id);
         app('request')->attributes->set('audit.user_id', $user->id);
         AuditContext::mark($request, 'auth.registered', $user);

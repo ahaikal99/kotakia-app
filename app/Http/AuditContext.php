@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Models\AccessControl;
+use App\Models\Design;
 use App\Models\Invitation;
 use App\Models\Payment;
 use App\Models\PromotionBanner;
@@ -15,6 +16,7 @@ class AuditContext
     public static function snapshot(Model $model): array
     {
         $fields = match (true) {
+            $model instanceof Design => ['name', 'code', 'theme', 'is_active'],
             $model instanceof Invitation => [...$model->getFillable(), 'package_code', 'package_name', 'design_code', 'design_name', 'amount_cents', 'status'],
             $model instanceof Payment => ['invitation_id', 'reference', 'amount_cents', 'currency', 'status', 'method'],
             $model instanceof User => ['name', 'email', 'phone', 'role', 'is_active', 'blocked_reason'],

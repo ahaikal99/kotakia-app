@@ -21,7 +21,7 @@
 <div class="mt-8 mb-5 flex items-center gap-2 rounded-xl border border-[#B6975A]/20 bg-[#B6975A]/10 px-3 py-2.5 text-xs font-bold text-[#92743e]"><x-icon name="shield" class="w-4 h-4"/> RUANG MANAGER</div>
 <p class="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-bold mb-3 px-3">Menu utama</p>
 <nav aria-label="Navigasi manager" class="space-y-2">
-@foreach (['manager.index' => ['Ringkasan','grid'], 'manager.orders' => ['Order','orders'], 'manager.users' => ['Pengguna & Manager','users'], 'manager.banners' => ['Banner Promosi','image'], 'manager.logs' => ['Log Sistem','logs'], 'manager.controls' => ['Kawalan Akses','lock']] as $route => [$label, $icon])
+@foreach (['manager.index' => ['Ringkasan','grid'], 'manager.orders' => ['Order','orders'], 'manager.users' => ['Pengguna & Manager','users'], 'manager.designs' => ['Design','image'], 'manager.banners' => ['Banner Promosi','image'], 'manager.logs' => ['Log Sistem','logs'], 'manager.controls' => ['Kawalan Akses','lock']] as $route => [$label, $icon])
 <a href="{{ route($route) }}" class="manager-nav-link {{ request()->routeIs($route, $route.'.*') ? 'is-active' : '' }}" @if(request()->routeIs($route, $route.'.*')) aria-current="page" @endif><x-icon :name="$icon"/><span>{{ $label }}</span>@if(request()->routeIs($route, $route.'.*'))<span class="ml-auto h-1.5 w-1.5 rounded-full bg-[#B6975A]" aria-hidden="true"></span>@endif</a>
 @endforeach
 </nav>

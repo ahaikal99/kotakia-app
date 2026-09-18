@@ -54,8 +54,8 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 @forelse ($designs as $design)
                     <article class="catalog-card group rounded-[2rem] border border-slate-200 bg-white p-3 shadow-sm transition hover:shadow-xl hover:border-[#B6975A]/50">
-                        <a href="{{ asset('image/KATALOG/'.$design['code'].'.png') }}" target="_blank" rel="noopener" class="catalog-art block relative overflow-hidden rounded-[1.5rem] bg-[#f1eee8]" aria-label="Lihat imej {{ $design['name'] }}, {{ $design['code'] }} (tab baharu)">
-                            <img src="{{ asset('image/KATALOG/'.$design['code'].'.png') }}" alt="Reka bentuk {{ $design['name'] }}" width="448" height="944" class="catalog-preview" @if ($loop->index > 2) loading="lazy" @endif>
+                        <a href="{{ $design->thumbnailUrl() }}" target="_blank" rel="noopener" class="catalog-art block relative overflow-hidden rounded-[1.5rem] bg-[#f1eee8]" aria-label="Lihat imej {{ $design['name'] }}, {{ $design['code'] }} (tab baharu)">
+                            <img src="{{ $design->thumbnailUrl() }}" alt="Reka bentuk {{ $design['name'] }}" width="448" height="944" class="catalog-preview" @if ($loop->index > 2) loading="lazy" @endif>
                             <span class="absolute bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap bg-white/95 border border-slate-200 rounded-full py-2.5 px-5 text-xs font-bold shadow-sm transition group-hover:bg-slate-900 group-hover:text-white">Lihat Reka Bentuk ↗</span>
                         </a>
                         <div class="px-3 pt-5 pb-4">

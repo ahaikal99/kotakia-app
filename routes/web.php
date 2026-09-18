@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\DesignController;
 use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\InvitationShareController;
 use App\Http\Controllers\ManagerController;
@@ -27,6 +28,10 @@ Route::get('/jemputan/{token}', [InvitationShareController::class, 'show'])
     ->name('invitations.public');
 
 Route::middleware(['auth', RequireManager::class])->prefix('manager')->name('manager.')->group(function () {
+    Route::get('/designs', [DesignController::class, 'index'])->name('designs');
+    Route::get('/designs/create', [DesignController::class, 'create'])->name('designs.create');
+    Route::post('/designs', [DesignController::class, 'store'])->middleware('throttle:20,1')->name('designs.store');
+    Route::patch('/designs/{design}/status', [DesignController::class, 'status'])->whereNumber('design')->name('designs.status');
     Route::get('/', [ManagerController::class, 'index'])->name('index');
     Route::get('/banners', [PromotionBannerController::class, 'index'])->name('banners');
     Route::get('/banners/create', [PromotionBannerController::class, 'create'])->name('banners.create');

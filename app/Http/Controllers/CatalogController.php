@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Design;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -24,7 +25,7 @@ class CatalogController extends Controller
             $sort = 'kod';
         }
 
-        $collection = collect(config('catalog.designs'));
+        $collection = Design::where('is_active', true)->get();
         $counts = $collection->countBy('theme');
         $designs = $collection->when($theme !== 'semua', fn ($items) => $items->where('theme', $theme));
         $designs = match ($sort) {

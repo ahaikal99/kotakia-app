@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\AuditContext;
 use App\Http\Requests\InvitationRequest;
+use App\Models\Design;
 use App\Models\Invitation;
 use App\Models\PromotionBanner;
 use Illuminate\Http\RedirectResponse;
@@ -56,7 +57,7 @@ class InvitationController extends Controller
             $wasCompleted = $card->status === 'demo_complete';
             $card->fill($request->validated());
             if ($wasCompleted) {
-                $selectedDesign = collect(config('catalog.designs'))->firstWhere('code', $card->design_code);
+                $selectedDesign = Design::where('code', $card->design_code)->first();
                 if (($selectedDesign['theme'] ?? null) !== $card->theme) {
                     $card->forceFill(['design_code' => null, 'design_name' => null]);
                 }
@@ -85,7 +86,7 @@ class InvitationController extends Controller
         return view('invitations.options', [
             'invitation' => $card,
             'packages' => config('packages'),
-            'designs' => collect(config('catalog.designs'))->where('theme', $card->theme),
+            'designs' => Design::where('is_active', true)->where('theme', $card->theme)->orderBy('code')->get(),
         ]);
     }
 
@@ -93,7 +94,7 @@ class InvitationController extends Controller
     {
         DB::transaction(function () use ($request, $invitation): void {
             $card = $request->user()->invitations()->lockForUpdate()->findOrFail($invitation);
-            $designs = collect(config('catalog.designs'))->where('theme', $card->theme)->keyBy('code');
+            $designs = Design::where('is_active', true)->where('theme', $card->theme)->get()->keyBy('code');
             if ($card->status === 'demo_complete') {
                 $data = $request->validate([
                     'design_code' => ['required', Rule::in($designs->keys()->all())],

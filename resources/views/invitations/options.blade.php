@@ -35,7 +35,7 @@
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 @forelse ($designs as $design)
                     <label class="choice-card p-3">
-                        <span class="block rounded-2xl bg-[#f1eee8] p-4 h-64 mb-4"><img class="w-full h-full object-contain" src="{{ asset('image/KATALOG/'.$design['code'].'.png') }}" alt="{{ $design['name'] }}" loading="lazy"></span>
+                        <span class="block rounded-2xl bg-[#f1eee8] p-4 h-64 mb-4"><img class="w-full h-full object-contain" src="{{ $design->thumbnailUrl() }}" alt="{{ $design['name'] }}" loading="lazy"></span>
                         <span class="flex items-center justify-between gap-3 px-2 pb-3"><span><strong class="block font-serif text-xl">{{ $design['name'] }}</strong><span class="text-xs text-slate-500">{{ $design['code'] }}</span></span><input type="radio" name="design_code" value="{{ $design['code'] }}" required @checked(old('design_code', $invitation->design_code) === $design['code'])></span>
                     </label>
                 @empty

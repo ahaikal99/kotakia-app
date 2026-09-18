@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="ms">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview {{ $design->name }} | Kotakia</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <meta name="theme-color" content="#556b2f">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+
+
+    <link rel="stylesheet" href="{{ asset('vendor/aos/aos.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/line-awesome/css/line-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/fonts/kp0001.css') }}">
+    <script src="{{ asset('vendor/aos/aos.js') }}"></script>
+    @vite($design->assetEntrypoints())
+
+
+
+
+
+
+
+
+</head>
+
+<body class="antialiased overflow-x-hidden" data-kp0001 data-wedding-date="2027-04-12T11:00:00+08:00"
+    style="--kp0001-background: url('{{ asset('image/MD001/md001_background.png') }}')">
+
+    <audio id="bgMusic" loop preload="none">
+        <source src="{{ asset('audio/a-thousand-years.mp3') }}" type="audio/mpeg">
+    </audio>
+
+    <button type="button" aria-label="Main muzik" aria-pressed="false" id="musicControl" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 bg-white/80 backdrop-blur-md px-4 py-2.5 rounded-full shadow-lg border border-white/50 cursor-pointer transition-all duration-700 active:scale-95 group opacity-0 pointer-events-none">
+        <div class="flex items-end gap-0.5 h-4 w-5">
+            <div class="bar bg-purple-600 w-1 rounded-full"></div>
+            <div class="bar bg-purple-600 w-1 rounded-full"></div>
+            <div class="bar bg-purple-600 w-1 rounded-full"></div>
+        </div>
+        <span class="text-[10px] font-bold text-slate-800 tracking-tight whitespace-nowrap">
+            A Thousand Years - Christina Perri (Instrumental)
+        </span>
+    </button>
+
+    <div class="main-container max-w-md mx-auto bg-[#fcfcf8] min-h-screen shadow-2xl relative pb-28 border-x border-stone-100 floral-header">
+
+        <!-- Section 1 -->
+        <section id="home" class="home-bg-custom min-h-screen flex flex-col items-center justify-center text-center p-8 relative overflow-hidden">
+
+            <img src="{{ asset('image/MD001/md001_daun1.png') }}"
+                alt="floral top left"
+                class="bunga-daun opacity-0 transition-opacity duration-1000 corner-floral top-[-20px] left-[-20px] z-10 animate-leaf-1 w-40 absolute">
+
+            <img src="{{ asset('image/MD001/md001_daun3.png') }}"
+                alt="floral top right"
+                class="bunga-daun opacity-0 transition-opacity duration-1000 corner-floral top-[-20px] right-[-20px] rotate-90 z-10 animate-leaf-2 w-40 absolute">
+
+            <img src="{{ asset('image/MD001/md001_daun2.png') }}"
+                alt="floral bottom left"
+                class="bunga-daun opacity-0 transition-opacity duration-1000 corner-floral bottom-[-20px] left-[-20px] rotate-180 z-10 animate-leaf-3 w-40 absolute">
+
+            <img src="{{ asset('image/MD001/md001_daun4.png') }}"
+                alt="floral bottom right"
+                class="bunga-daun opacity-0 transition-opacity duration-1000 corner-floral bottom-[-20px] right-[-20px] z-10 animate-leaf-4 w-40 absolute">
+
+            <div class="relative z-30">
+                <div id="text-top" class="transition-opacity duration-1000 mb-4 text-green-light tracking-[0.4em] uppercase text-xs font-semibold">
+                    Walimatulurus
+                </div>
+
+                <div data-aos="zoom-in" data-aos-duration="2000" data-aos-delay="200" class="relative mb-6 py-4">
+                    <div class="absolute inset-0 bg-green-light/20 rounded-full scale-125 blur-3xl animate-pulse"></div>
+
+                    <h1 class="text-6xl md:text-7xl font-cursive text-green-main relative z-10 tracking-normal animate-name">
+                        Arif & Najihah
+                    </h1>
+                </div>
+
+                <div id="text-bottom" class="opacity-0 transition-opacity duration-1000 mb-12">
+                    <p class="text-stone-600 font-serif text-lg">
+                        Sabtu, 12 April 2027
+                    </p>
+                </div>
+
+                <div class="button-wrapper" id="btn-container">
+                    <div data-aos="fade-up" data-aos-delay="600" id="btn-main">
+                        <button type="button" data-open-invitation class="btn-primary px-10 py-4 rounded-full text-xs tracking-widest uppercase font-bold shadow-lg inline-flex items-center gap-2">
+                            Buka Undangan <i class="la la-envelope" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div id="invitation-intro" class="home-bg-custom2 min-h-screen flex flex-col items-center justify-center text-center p-8 relative overflow-hidden border-b-8 border-green-main">
+
+            <!-- Floral -->
+            <img src="{{ asset('image/MD001/md001_daun1.png') }}"
+                alt="floral top left"
+                data-aos="fade-down-right" data-aos-duration="2000"
+                class="corner-floral floral-top-left opacity-20 z-10 animate-leaf-1 w-40">
+
+            <img src="{{ asset('image/MD001/md001_daun3.png') }}"
+                alt="floral top right"
+                data-aos="fade-down-left" data-aos-duration="2000" data-aos-delay="300"
+                class="corner-floral floral-top-right rotate-90 opacity-20 z-10 animate-leaf-2 w-40">
+
+            <img src="{{ asset('image/MD001/md001_daun2.png') }}"
+                alt="floral bottom left"
+                data-aos="fade-up-right" data-aos-duration="2000" data-aos-delay="500"
+                class="corner-floral floral-bottom-left rotate-180 opacity-20 z-10 animate-leaf-3 w-40">
+
+            <img src="{{ asset('image/MD001/md001_daun4.png') }}"
+                alt="floral bottom right"
+                data-aos="fade-up-left" data-aos-duration="2000" data-aos-delay="700"
+                class="corner-floral floral-bottom-right opacity-20 z-10 animate-leaf-4 w-40">
+
+            <!-- Section 2 -->
+            <!-- SECTION INTRO -->
+            <section data-aos="fade-up" class="py-14 px-6 text-center relative">
+
+                <!-- subtle floral glow -->
+                <div class="absolute inset-0 bg-green-light/30 blur-3xl opacity-40 rounded-full scale-125"></div>
+
+                <div class="relative z-10">
+
+                    <img src="{{ asset('image/MD001/caligraphy.png') }}"
+                        alt="Bismillah"
+                        class="w-41 mx-auto mb-3 opacity-70">
+
+                    <div class="text-2xl mb-1 font-serif italic text-green-main font-semibold tracking-wide">
+                        Assalamualaikum W.B.T
+                    </div>
+
+                    <div class="flex flex-col items-center justify-center my-6 opacity-90">
+
+                        <svg width="240" height="40" viewBox="0 0 280 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                            <!-- Line kiri -->
+                            <path d="M0 30 C40 30, 70 30, 110 30"
+                                stroke="#C5A059" stroke-width="0.8" stroke-linecap="round" />
+
+                            <!-- Line kanan -->
+                            <path d="M170 30 C210 30, 240 30, 280 30"
+                                stroke="#C5A059" stroke-width="0.8" stroke-linecap="round" />
+
+                            <!-- Branch kiri -->
+                            <path d="M95 30 Q105 15 115 25"
+                                stroke="#C5A059" stroke-width="0.6" fill="none" />
+
+                            <path d="M95 30 Q105 45 115 35"
+                                stroke="#C5A059" stroke-width="0.6" fill="none" />
+
+                            <!-- Branch kanan -->
+                            <path d="M165 30 Q175 15 185 25"
+                                stroke="#C5A059" stroke-width="0.6" fill="none" />
+
+                            <path d="M165 30 Q175 45 185 35"
+                                stroke="#C5A059" stroke-width="0.6" fill="none" />
+
+                            <!-- ornament tengah -->
+                            <path d="M130 30 Q140 20 150 30"
+                                stroke="#C5A059" stroke-width="0.7" fill="none" />
+
+                            <path d="M130 30 Q140 40 150 30"
+                                stroke="#C5A059" stroke-width="0.7" fill="none" />
+
+                            <path d="M135 30 Q140 25 145 30"
+                                stroke="#C5A059" stroke-width="0.4" opacity="0.5" />
+
+                        </svg>
+
+                    </div>
+
+                    <p class="text-xm leading-relaxed text-stone-600 max-w-[240px] mx-auto font-light">
+                        Dengan penuh kesyukuran ke hadrat Ilahi, kami menjemput
+                        Dato' / Datin / Tuan / Puan / Encik / Cik sekeluarga
+                        ke majlis perkahwinan kami.
+                    </p>
+
+                </div>
+            </section>
+
+            <!-- SECTION MEMPELAI -->
+            <section id="mempelai"
+                class="py-20 px-6 bg-white rounded-[30px] border border-green-main/10 relative overflow-hidden shadow-xl">
+
+                <!-- <img src="{{ asset('image/MD001/md001_daun5.png') }}" alt="wreath" class="absolute top-[-20px] left-[-20px] w-20 opacity-70 -rotate-[-25deg]"> -->
+
+                <div class="relative z-10 text-center max-w-sm mx-auto">
+
+                    <!-- lelaki -->
+                    <div class="mb-8">
+                        <div class="text-[11px] text-[#1f3d2b]/60 uppercase tracking-[0.45em] mb-2 font-[Cormorant_Garamond]">
+                            Pengantin Lelaki
+                        </div>
+
+                        <div class="text-[36px] text-[#1f3d2b] text-green-main font-[Dancing_Script] leading-none">
+                            Muhammad Arif Haikal
+                        </div>
+
+                        <div class="text-sm text-stone-500 mt-1 italic font-[Cormorant_Garamond] font-light">
+                            Putera kepada Tuan ... & Puan ...
+                        </div>
+                    </div>
+
+                    <!-- divider -->
+                    <div class="flex items-center justify-center gap-3 my-3">
+
+                        <div class="w-12 h-[1px] bg-[#C5A059]/40"></div>
+
+                        <div class="w-1 h-1 bg-[#C5A059] rounded-full"></div>
+
+                        <span class="text-4xl text-[#C5A059] font-[Allura] leading-none">
+                            &
+                        </span>
+
+                        <div class="w-1 h-1 bg-[#C5A059] rounded-full"></div>
+
+                        <div class="w-12 h-[1px] bg-[#C5A059]/40"></div>
+                    </div>
+
+                    <!-- perempuan -->
+                    <div class="mt-8">
+                        <div class="text-[11px] text-[#1f3d2b]/60 uppercase tracking-[0.45em] mb-2 font-[Cormorant_Garamond]">
+                            Pengantin Perempuan
+                        </div>
+
+                        <div class="text-[36px] text-[#1f3d2b] text-green-main font-[Dancing_Script] leading-none">
+                            Siti Najihah
+                        </div>
+
+                        <div class="text-sm text-stone-500 mt-1 italic font-[Cormorant_Garamond] font-light">
+                            Puteri kepada Tuan ... & Puan ...
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+
+        <div class="home-bg-custom3 min-h-screen flex flex-col items-center justify-center text-center p-8 relative overflow-hidden border-b-8 border-green-main">
+
+            <!-- Floral -->
+            <img src="{{ asset('image/MD001/md001_daun1.png') }}"
+                alt="floral top left"
+                data-aos="fade-down-right" data-aos-duration="2000"
+                class="corner-floral top-[-20px] left-[-20px] opacity-20 z-10 animate-leaf-1 w-40">
+
+            <img src="{{ asset('image/MD001/md001_daun3.png') }}"
+                alt="floral top right"
+                data-aos="fade-down-left" data-aos-duration="2000" data-aos-delay="300"
+                class="corner-floral top-[-20px] right-[-20px] rotate-90 opacity-20 z-10 animate-leaf-2 w-40">
+
+            <img src="{{ asset('image/MD001/md001_daun2.png') }}"
+                alt="floral bottom left"
+                data-aos="fade-up-right" data-aos-duration="2000" data-aos-delay="500"
+                class="corner-floral bottom-[-20px] left-[-20px] rotate-180 opacity-20 z-10 animate-leaf-3 w-40">
+
+            <img src="{{ asset('image/MD001/md001_daun4.png') }}"
+                alt="floral bottom right"
+                data-aos="fade-up-left" data-aos-duration="2000" data-aos-delay="700"
+                class="corner-floral bottom-[-20px] right-[-20px] opacity-20 z-10 animate-leaf-4 w-40">
+
+            <section id="acara" class="py-14 px-6 space-y-8 text-center" data-aos="fade-up">
+
+                <!-- HEADER WOW -->
+                <div class="flex flex-col items-center gap-3">
+
+                    <!-- line atas -->
+                    <div class="w-20 h-[1px] bg-[#C5A059]/40"></div>
+
+                    <!-- tajuk + ornament -->
+                    <div class="flex items-center gap-3">
+
+                        <div class="w-6 h-[1px] bg-[#C5A059]/40"></div>
+
+                        <!-- ornament tengah -->
+                        <div class="text-[#C5A059] text-xl">
+                            ✦
+                        </div>
+
+                        <div class="text-lg font-[Cormorant_Garamond] tracking-[0.35em] text-[#1f3d2b]/80 uppercase">
+                            Butiran Majlis
+                        </div>
+
+                        <div class="text-[#C5A059] text-xl">
+                            ✦
+                        </div>
+
+                        <div class="w-6 h-[1px] bg-[#C5A059]/40"></div>
+
+                    </div>
+
+                    <!-- line bawah -->
+                    <div class="w-20 h-[1px] bg-[#C5A059]/40"></div>
+
+                </div>
+
+                <!-- CONTENT -->
+                <div class="space-y-6">
+
+                    <!-- TARIKH -->
+                    <div class="py-4 border-b border-[#C5A059]/20">
+                        <div class="text-[11px] tracking-[0.4em] uppercase text-stone-400 mb-1">
+                            Tarikh
+                        </div>
+
+                        <div class="text-xl font-[Playfair_Display] text-[#1f3d2b]">
+                            12 April 2027 (Sabtu)
+                        </div>
+
+                        <div class="text-sm text-stone-500 italic">
+                            19 Jamadilakhir 1449H
+                        </div>
+                    </div>
+
+                    <!-- LOKASI -->
+                    <div class="py-4">
+                        <div class="text-[11px] tracking-[0.4em] uppercase text-stone-400 mb-1">
+                            Lokasi
+                        </div>
+
+                        <div class="text-xl font-[Playfair_Display] text-[#1f3d2b] leading-snug">
+                            Dewan Jubli Perak
+                        </div>
+
+                        <div class="text-sm text-stone-600">
+                            Shah Alam, Selangor
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- BUTTON -->
+                <div class="flex gap-3 pt-2">
+
+                    <a href="#"
+                        class="flex-1 border border-[#C5A059]/40 px-4 py-2.5 rounded-full text-xs tracking-wide text-[#1f3d2b] inline-flex items-center justify-center gap-2 hover:bg-[#C5A059]/10 transition">
+                        <i class="la la-google text-base"></i> Google Maps
+                    </a>
+
+                    <a href="#"
+                        class="flex-1 border border-[#C5A059]/40 px-4 py-2.5 rounded-full text-xs tracking-wide text-[#1f3d2b] inline-flex items-center justify-center gap-2 hover:bg-[#C5A059]/10 transition">
+                        <i class="la la-waze text-base"></i> Waze
+                    </a>
+
+                </div>
+
+            </section>
+
+        </div>
+
+        <div class="home-bg-custom4 min-h-screen flex flex-col items-center justify-center text-center p-8 relative overflow-hidden border-b-8 border-green-main">
+
+            <!-- Floral -->
+            <img src="{{ asset('image/MD001/md001_daun1.png') }}"
+                alt="floral top left"
+                data-aos="fade-down-right" data-aos-duration="2000"
+                class="corner-floral top-[-20px] left-[-20px] opacity-20 z-10 animate-leaf-1 w-40">
+
+            <img src="{{ asset('image/MD001/md001_daun3.png') }}"
+                alt="floral top right"
+                data-aos="fade-down-left" data-aos-duration="2000" data-aos-delay="300"
+                class="corner-floral top-[-20px] right-[-20px] rotate-90 opacity-20 z-10 animate-leaf-2 w-40">
+
+            <img src="{{ asset('image/MD001/md001_daun2.png') }}"
+                alt="floral bottom left"
+                data-aos="fade-up-right" data-aos-duration="2000" data-aos-delay="500"
+                class="corner-floral bottom-[-20px] left-[-20px] rotate-180 opacity-20 z-10 animate-leaf-3 w-40">
+
+            <img src="{{ asset('image/MD001/md001_daun4.png') }}"
+                alt="floral bottom right"
+                data-aos="fade-up-left" data-aos-duration="2000" data-aos-delay="700"
+                class="corner-floral bottom-[-20px] right-[-20px] opacity-20 z-10 animate-leaf-4 w-40">
+
+            <section data-aos="zoom-in" class="py-16 px-6 relative text-center overflow-hidden">
+
+                <div class="relative z-10">
+
+                    <!-- HEADER WOW -->
+                    <div class="flex flex-col items-center gap-3">
+
+                        <!-- line atas -->
+                        <div class="w-20 h-[1px] bg-[#C5A059]/40"></div>
+
+                        <!-- tajuk + ornament -->
+                        <div class="flex items-center gap-3">
+
+                            <div class="w-6 h-[1px] bg-[#C5A059]/40"></div>
+
+                            <!-- ornament tengah -->
+                            <div class="text-[#C5A059] text-xl">
+                                ✦
+                            </div>
+
+                            <div class="text-lg font-[Cormorant_Garamond] tracking-[0.35em] text-[#1f3d2b]/80 uppercase">
+                                Menghitung Hari
+                            </div>
+
+                            <div class="text-[#C5A059] text-xl">
+                                ✦
+                            </div>
+
+                            <div class="w-6 h-[1px] bg-[#C5A059]/40"></div>
+
+                        </div>
+
+                        <!-- line bawah -->
+                        <div class="w-20 h-[1px] bg-[#C5A059]/40"></div>
+
+                    </div>
+
+                    <!-- elegant divider -->
+                    <div class="flex items-center justify-center gap-3 mb-10">
+                    </div>
+
+                    <!-- countdown -->
+                    <div class="flex justify-center items-end gap-4">
+
+                        <!-- item -->
+                        <div class="text-center">
+                            <div id="days" class="text-[38px] font-[Playfair_Display] text-[#1f3d2b] leading-none">
+                                00
+                            </div>
+                            <div class="text-[10px] uppercase tracking-[0.35em] text-stone-500 mt-2">
+                                Hari
+                            </div>
+                        </div>
+
+                        <!-- separator -->
+                        <div class="text-[#C5A059] text-2xl mb-2">:</div>
+
+                        <div class="text-center">
+                            <div id="hours" class="text-[38px] font-[Playfair_Display] text-[#1f3d2b] leading-none">
+                                00
+                            </div>
+                            <div class="text-[10px] uppercase tracking-[0.35em] text-stone-500 mt-2">
+                                Jam
+                            </div>
+                        </div>
+
+                        <div class="text-[#C5A059] text-2xl mb-2">:</div>
+
+                        <div class="text-center">
+                            <div id="mins" class="text-[38px] font-[Playfair_Display] text-[#1f3d2b] leading-none">
+                                00
+                            </div>
+                            <div class="text-[10px] uppercase tracking-[0.35em] text-stone-500 mt-2">
+                                Minit
+                            </div>
+                        </div>
+
+                        <div class="text-[#C5A059] text-2xl mb-2">:</div>
+
+                        <div class="text-center">
+                            <div id="secs" class="text-[38px] font-[Playfair_Display] text-[#C5A059] leading-none animate-pulse">
+                                00
+                            </div>
+                            <div class="text-[10px] uppercase tracking-[0.35em] text-[#C5A059] mt-2">
+                                Saat
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- DOA PENGANTIN -->
+                <div class="max-w-md mx-auto mt-12 px-4">
+                    <!-- Simbol Hiasan Atas -->
+                    <div class="text-[#C5A059] text-2xl mb-4 italic font-[Pinyon_Script]">
+                        Doa buat mempelai
+                    </div>
+
+                    <!-- Teks Doa -->
+                    <p class="font-[Cormorant_Garamond] text-[#1f3d2b] italic text-lg leading-relaxed tracking-wide">
+                        "Ya Allah, berkatilah majlis perkahwinan ini, limpahkanlah barakah dan rahmat kepada kedua mempelai. Jadikanlah mereka pasangan yang saling mencintai, serta anugerahkanlah kepada mereka zuriat yang soleh dan solehah."
+                    </p>
+
+                    <!-- Nama Penutup / Amin -->
+                    <div class="mt-4 font-[Pinyon_Script] text-2xl text-[#C5A059]">
+                        Aamiin Ya Rabbal Alamin
+                    </div>
+
+                    <!-- Ornament Bawah (Maroon & Gold) -->
+                    <div class="flex items-center justify-center gap-2 mt-6">
+                        <!-- Tukar border kepada bg (background) -->
+                        <div class="w-2 h-2 rotate-45 bg-[#C5A059]"></div>
+
+                        <div class="w-12 h-[1px] bg-gradient-to-r from-transparent via-[#800000] to-transparent"></div>
+
+                        <div class="w-2 h-2 rotate-45 bg-[#C5A059]"></div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+
+        <div class="home-bg-custom5 min-h-screen flex flex-col items-center justify-center text-center p-8 relative overflow-hidden border-b-8 border-green-main">
+
+            <!-- Floral -->
+            <img src="{{ asset('image/MD001/md001_daun1.png') }}"
+                alt="floral top left"
+                data-aos="fade-down-right" data-aos-duration="2000"
+                class="corner-floral top-[-20px] left-[-20px] opacity-20 z-10 animate-leaf-1 w-40">
+
+            <img src="{{ asset('image/MD001/md001_daun3.png') }}"
+                alt="floral top right"
+                data-aos="fade-down-left" data-aos-duration="2000" data-aos-delay="300"
+                class="corner-floral top-[-20px] right-[-20px] rotate-90 opacity-20 z-10 animate-leaf-2 w-40">
+
+            <img src="{{ asset('image/MD001/md001_daun2.png') }}"
+                alt="floral bottom left"
+                data-aos="fade-up-right" data-aos-duration="2000" data-aos-delay="500"
+                class="corner-floral bottom-[-20px] left-[-20px] rotate-180 opacity-20 z-10 animate-leaf-3 w-40">
+
+            <img src="{{ asset('image/MD001/md001_daun4.png') }}"
+                alt="floral bottom right"
+                data-aos="fade-up-left" data-aos-duration="2000" data-aos-delay="700"
+                class="corner-floral bottom-[-20px] right-[-20px] opacity-20 z-10 animate-leaf-4 w-40">
+
+            <section data-aos="zoom-in" class="py-16 px-6 relative text-center overflow-hidden">
+
+                <div class="relative z-10">
+
+                    <!-- HEADER WOW -->
+                    <div class="flex flex-col items-center gap-3">
+
+                        <!-- line atas -->
+                        <div class="w-20 h-[1px] bg-[#C5A059]/40"></div>
+
+                        <!-- tajuk + ornament -->
+                        <div class="flex items-center gap-3">
+
+                            <div class="w-6 h-[1px] bg-[#C5A059]/40"></div>
+
+                            <!-- ornament tengah -->
+                            <div class="text-[#C5A059] text-xl">
+                                ✦
+                            </div>
+
+                            <div class="text-lg font-[Cormorant_Garamond] tracking-[0.35em] text-[#1f3d2b]/80 uppercase">
+                                Galeri Pengantin
+                            </div>
+
+                            <div class="text-[#C5A059] text-xl">
+                                ✦
+                            </div>
+
+                            <div class="w-6 h-[1px] bg-[#C5A059]/40"></div>
+
+                        </div>
+
+                        <!-- line bawah -->
+                        <div class="w-20 h-[1px] bg-[#C5A059]/40"></div>
+
+                    </div>
+
+                    <!-- elegant divider -->
+                    <div class="flex items-center justify-center gap-3 mb-10">
+                    </div>
+
+                    <div class="relative w-full max-w-sm mx-auto overflow-hidden rounded-2xl">
+
+                        <!-- Slides -->
+                        <div id="slider" class="flex transition-transform duration-700 ease-in-out">
+
+                            <img src="{{ asset('image/MD001/galeri1.png') }}" class="w-full flex-shrink-0 object-cover h-[250px]">
+                            <img src="{{ asset('image/MD001/galeri2.png') }}" class="w-full flex-shrink-0 object-cover h-[250px]">
+                            <img src="{{ asset('image/MD001/galeri3.png') }}" class="w-full flex-shrink-0 object-cover h-[250px]">
+
+                        </div>
+
+                        <!-- Dots -->
+                        <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
+                            <span class="dot w-2 h-2 bg-white/50 rounded-full"></span>
+                            <span class="dot w-2 h-2 bg-white/50 rounded-full"></span>
+                            <span class="dot w-2 h-2 bg-white/50 rounded-full"></span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <br><br>
+
+                <!-- HEADER WOW -->
+                <div class="flex flex-col items-center gap-3">
+
+                    <!-- line atas -->
+                    <div class="w-20 h-[1px] bg-[#C5A059]/40"></div>
+
+                    <!-- tajuk + ornament -->
+                    <div class="flex items-center gap-3">
+
+                        <div class="w-6 h-[1px] bg-[#C5A059]/40"></div>
+
+                        <!-- ornament tengah -->
+                        <div class="text-[#C5A059] text-xl">
+                            ✦
+                        </div>
+
+                        <div class="text-lg font-[Cormorant_Garamond] tracking-[0.35em] text-[#1f3d2b]/80 uppercase">
+                            Ucapan
+                        </div>
+
+                        <div class="text-[#C5A059] text-xl">
+                            ✦
+                        </div>
+
+                        <div class="w-6 h-[1px] bg-[#C5A059]/40"></div>
+
+                    </div>
+
+                    <!-- line bawah -->
+                    <div class="w-20 h-[1px] bg-[#C5A059]/40"></div>
+
+                </div>
+
+                <br>
+
+                <!-- LIST UCAPAN -->
+                <div class="max-w-md mx-auto p-4 overflow-hidden relative">
+                    <div id="ucapanContainer" class="flex flex-col gap-3 transition-transform duration-500 ease-in-out">
+                    </div>
+                </div>
+
+            </section>
+        </div>
+
+        <div class="home-bg-custom6 min-h-screen flex flex-col items-center justify-center text-center p-8 relative overflow-hidden">
+
+            <img src="{{ asset('image/MD001/md001_daun1.png') }}"
+                alt="floral top left"
+                data-aos="fade-down-right" data-aos-duration="2000"
+                class="corner-floral floral-top-left opacity-20 z-10 animate-leaf-1 w-40">
+
+            <img src="{{ asset('image/MD001/md001_daun3.png') }}"
+                alt="floral top right"
+                data-aos="fade-down-left" data-aos-duration="2000" data-aos-delay="300"
+                class="corner-floral floral-top-right rotate-90 opacity-20 z-10 animate-leaf-2 w-40">
+
+            <img src="{{ asset('image/MD001/md001_daun2.png') }}"
+                alt="floral bottom left"
+                data-aos="fade-up-right" data-aos-duration="2000" data-aos-delay="500"
+                class="corner-floral floral-bottom-left rotate-180 opacity-20 z-10 animate-leaf-3 w-40">
+
+            <img src="{{ asset('image/MD001/md001_daun4.png') }}"
+                alt="floral bottom right"
+                data-aos="fade-up-left" data-aos-duration="2000" data-aos-delay="700"
+                class="corner-floral floral-bottom-right opacity-20 z-10 animate-leaf-4 w-40">
+
+            <section id="rsvp" data-aos="fade-up" class="py-20 px-6 mb-10 relative overflow-hidden text-center">
+
+                <!-- HEADER WOW -->
+                <div class="flex flex-col items-center gap-3">
+
+                    <!-- line atas -->
+                    <div class="w-20 h-[1px] bg-[#C5A059]/40"></div>
+
+                    <!-- tajuk + ornament -->
+                    <div class="flex items-center gap-3">
+
+                        <div class="w-6 h-[1px] bg-[#C5A059]/40"></div>
+
+                        <!-- ornament tengah -->
+                        <div class="text-[#C5A059] text-xl">
+                            ✦
+                        </div>
+
+                        <div class="text-lg font-[Cormorant_Garamond] tracking-[0.35em] text-[#1f3d2b]/80 uppercase">
+                            Pengesahan Kehadiran
+                        </div>
+
+                        <div class="text-[#C5A059] text-xl">
+                            ✦
+                        </div>
+
+                        <div class="w-6 h-[1px] bg-[#C5A059]/40"></div>
+
+                    </div>
+
+                    <!-- line bawah -->
+                    <div class="w-20 h-[1px] bg-[#C5A059]/40"></div>
+
+                </div>
+
+                <br><br>
+
+                <p class="font-[Cormorant_Garamond] text-stone-500 tracking-[0.2em] uppercase text-[10px] mb-12">Mohon maklum balas sebelum majlis berlangsung</p>
+
+                <div class="max-w-md mx-auto relative">
+                    <!-- Borang dengan kesan shadow lembut dan border olive nipis -->
+                    <form class="text-left space-y-6 bg-white/90 backdrop-blur-sm p-10 rounded-[2rem] border border-[#556b2f]/10 shadow-[0_20px_50px_rgba(85,107,47,0.08)] relative z-10">
+
+                        <!-- Input Nama -->
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest font-bold text-[#556b2f] ml-1 mb-2 block">Nama Penuh</label>
+                            <input type="text" placeholder="Masukkan nama anda"
+                                class="w-full bg-transparent border border-stone-200 rounded-xl py-3 px-4 text-sm focus:outline-none focus:border-[#556b2f] transition-colors font-[Cormorant_Garamond] placeholder:italic">
+                        </div>
+
+                        <!-- Status Kehadiran -->
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest font-bold text-[#556b2f] ml-1 mb-2 block">Status Kehadiran</label>
+                            <div class="relative">
+                                <select class="w-full bg-transparent border border-stone-200 rounded-xl py-3 px-4 text-sm focus:outline-none focus:border-[#556b2f] transition-colors font-[Cormorant_Garamond] placeholder:italic">
+                                    <option>Hadir</option>
+                                    <option>Hadir bersama pasangan</option>
+                                    <option>Tidak Hadir</option>
+                                </select>
+                                <div class="absolute right-2 top-1/2 -translate-y-1/2 text-[#556b2f] pointer-events-none">
+                                    <small>▼</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bilangan -->
+                        <div>
+                            <label class="text-[10px] uppercase tracking-widest font-bold text-[#556b2f] ml-1 mb-2 block">Bilangan (Jika Hadir)</label>
+                            <input type="number" placeholder="1" min="1" max="10"
+                                class="w-full bg-transparent border border-stone-200 rounded-xl py-3 px-4 text-sm focus:outline-none focus:border-[#556b2f] transition-colors font-[Cormorant_Garamond] placeholder:italic">
+                        </div>
+
+                        <!-- Butang Hantar (Olive Green Gradient) -->
+                        <button type="button"
+                            class="w-full mt-4 bg-[#556b2f] text-[#f8f8f8] font-bold py-4 rounded-full shadow-xl hover:bg-[#3e4f22] active:scale-95 transition-all text-[11px] uppercase tracking-[0.3em] flex items-center justify-center gap-3">
+                            Hantar RSVP
+                            <span class="text-[#C5A059] text-lg">✧</span>
+                        </button>
+                    </form>
+
+                    <!-- Eleman Dekoratif Belakang Borang -->
+                    <div class="absolute -bottom-4 -right-4 w-full h-full border border-[#556b2f]/5 rounded-[2rem] -z-10"></div>
+                </div>
+            </section>
+        </div>
+
+        <footer class="py-12 text-center bg-green-light border-t border-green-main/10 px-6 relative overflow-hidden">
+
+            <p class="text-[11px] uppercase tracking-[0.4em] text-green-main/70 font-semibold mb-3 relative z-10">Terima Kasih</p>
+            <div class="text-sm font-serif font-bold text-green-main relative z-10">Arif & Najihah</div>
+            <p class="text-[10px] text-stone-400 mt-4 relative z-10">#ArifNajihahTillJannah</p>
+            <p class="text-[9px] text-stone-300 mt-1 relative z-10">Reka bentuk oleh Kotakia Digital</p>
+        </footer>
+
+        <nav id="bottom-nav" class="fixed bottom-0 left-0 right-0 z-50 max-w-md mx-auto bg-white/95 backdrop-blur-md border-t border-stone-100 shadow-[0_-5px_20px_rgba(85,107,47,0.08)] rounded-t-3xl h-22 flex items-center justify-around px-2 pb-2 transition-all duration-1000 transform translate-y-full opacity-0">
+            <!-- Isi kandungan nav anda tetap sama -->
+            <a href="#home" class="flex flex-col items-center text-center text-stone-400 transition hover:text-green-main active-menu p-3 flex-1">
+                <i class="la la-home text-2xl transition-all duration-300 mb-1"></i>
+                <span class="text-[9px] font-semibold uppercase tracking-wider">Utama</span>
+            </a>
+            <a href="#mempelai" class="flex flex-col items-center text-center text-stone-400 transition hover:text-green-main p-3 flex-1">
+                <i class="la la-heart text-2xl transition-all duration-300 mb-1"></i>
+                <span class="text-[9px] font-semibold uppercase tracking-wider">Mempelai</span>
+            </a>
+            <a href="#acara" class="flex flex-col items-center text-center text-stone-400 transition hover:text-green-main p-3 flex-1">
+                <i class="la la-leaf text-2xl transition-all duration-300 mb-1"></i>
+                <span class="text-[9px] font-semibold uppercase tracking-wider">Acara</span>
+            </a>
+            <a href="#rsvp" class="flex flex-col items-center text-center text-stone-400 transition hover:text-green-main p-3 flex-1">
+                <i class="la la-check-circle text-2xl transition-all duration-300 mb-1"></i>
+                <span class="text-[9px] font-semibold uppercase tracking-wider">RSVP</span>
+            </a>
+        </nav>
+
+    </div>
+
+
+
+
+
+
+</body>
+
+</html>

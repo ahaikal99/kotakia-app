@@ -1,0 +1,157 @@
+/* @fontsource/allura 5.3.0 — SIL Open Font License */
+/* allura-latin-400-normal */
+@font-face {
+  font-family: 'Allura';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url('allura-latin-400-normal.woff2') format('woff2'), url('allura-latin-400-normal.woff') format('woff');
+}
+
+/* @fontsource/cormorant-garamond 5.3.0 — SIL Open Font License */
+/* cormorant-garamond-latin-300-normal */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300;
+  src: url('cormorant-garamond-latin-300-normal.woff2') format('woff2'), url('cormorant-garamond-latin-300-normal.woff') format('woff');
+}
+/* cormorant-garamond-latin-400-normal */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url('cormorant-garamond-latin-400-normal.woff2') format('woff2'), url('cormorant-garamond-latin-400-normal.woff') format('woff');
+}
+/* cormorant-garamond-latin-500-normal */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url('cormorant-garamond-latin-500-normal.woff2') format('woff2'), url('cormorant-garamond-latin-500-normal.woff') format('woff');
+}
+/* cormorant-garamond-latin-600-normal */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url('cormorant-garamond-latin-600-normal.woff2') format('woff2'), url('cormorant-garamond-latin-600-normal.woff') format('woff');
+}
+/* cormorant-garamond-latin-700-normal */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url('cormorant-garamond-latin-700-normal.woff2') format('woff2'), url('cormorant-garamond-latin-700-normal.woff') format('woff');
+}
+
+/* @fontsource/dancing-script 5.3.0 — SIL Open Font License */
+/* dancing-script-latin-400-normal */
+@font-face {
+  font-family: 'Dancing Script';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url('dancing-script-latin-400-normal.woff2') format('woff2'), url('dancing-script-latin-400-normal.woff') format('woff');
+}
+/* dancing-script-latin-500-normal */
+@font-face {
+  font-family: 'Dancing Script';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url('dancing-script-latin-500-normal.woff2') format('woff2'), url('dancing-script-latin-500-normal.woff') format('woff');
+}
+/* dancing-script-latin-600-normal */
+@font-face {
+  font-family: 'Dancing Script';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url('dancing-script-latin-600-normal.woff2') format('woff2'), url('dancing-script-latin-600-normal.woff') format('woff');
+}
+
+/* @fontsource/mea-culpa 5.3.0 — SIL Open Font License */
+/* mea-culpa-latin-400-normal */
+@font-face {
+  font-family: 'Mea Culpa';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url('mea-culpa-latin-400-normal.woff2') format('woff2'), url('mea-culpa-latin-400-normal.woff') format('woff');
+}
+
+/* @fontsource/montserrat 5.3.0 — SIL Open Font License */
+/* montserrat-latin-300-normal */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300;
+  src: url('montserrat-latin-300-normal.woff2') format('woff2'), url('montserrat-latin-300-normal.woff') format('woff');
+}
+/* montserrat-latin-400-normal */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url('montserrat-latin-400-normal.woff2') format('woff2'), url('montserrat-latin-400-normal.woff') format('woff');
+}
+/* montserrat-latin-500-normal */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url('montserrat-latin-500-normal.woff2') format('woff2'), url('montserrat-latin-500-normal.woff') format('woff');
+}
+/* montserrat-latin-600-normal */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url('montserrat-latin-600-normal.woff2') format('woff2'), url('montserrat-latin-600-normal.woff') format('woff');
+}
+/* montserrat-latin-700-normal */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url('montserrat-latin-700-normal.woff2') format('woff2'), url('montserrat-latin-700-normal.woff') format('woff');
+}
+
+/* @fontsource/pinyon-script 5.3.0 — SIL Open Font License */
+/* pinyon-script-latin-400-normal */
+@font-face {
+  font-family: 'Pinyon Script';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url('pinyon-script-latin-400-normal.woff2') format('woff2'), url('pinyon-script-latin-400-normal.woff') format('woff');
+}
+
+/* @fontsource/playfair-display 5.3.0 — SIL Open Font License */
+/* playfair-display-latin-400-normal */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url('playfair-display-latin-400-normal.woff2') format('woff2'), url('playfair-display-latin-400-normal.woff') format('woff');
+}
+/* playfair-display-latin-600-normal */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url('playfair-display-latin-600-normal.woff2') format('woff2'), url('playfair-display-latin-600-normal.woff') format('woff');
+}

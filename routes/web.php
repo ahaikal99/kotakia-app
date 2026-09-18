@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\DesignController;
+use App\Http\Controllers\DesignPreviewController;
 use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\InvitationShareController;
 use App\Http\Controllers\ManagerController;
@@ -19,6 +20,9 @@ Route::get('/', function () {
 });
 
 Route::get('/design', CatalogController::class)->name('catalog');
+Route::get('/design/{code}', DesignPreviewController::class)
+    ->where('code', '[A-Za-z][A-Za-z0-9_-]{0,29}')
+    ->name('designs.preview');
 Route::get('/sitemap.xml', function () {
     return response()->view('sitemap', ['siteUrl' => rtrim(config('seo.url'), '/')])
         ->header('Content-Type', 'application/xml; charset=UTF-8');

@@ -27,7 +27,7 @@ class PasswordResetTest extends TestCase
     {
         $this->get('/signin')->assertOk()->assertSee('Lupa kata laluan?')->assertSee('data-password-toggle', false);
         $this->get(route('password.request'))->assertOk()->assertSee('Hantar pautan reset');
-        $this->get(route('password.reset', ['token' => 'example', 'email' => 'test@example.com']))->assertOk()->assertSee('noindex')->assertHeader('Referrer-Policy', 'no-referrer');
+        $this->get(route('password.reset', ['token' => 'example', 'email' => 'test@example.com']))->assertStatus(410)->assertSee('noindex')->assertHeader('Referrer-Policy', 'no-referrer')->assertDontSee('Simpan kata laluan');
     }
 
     public function test_requests_hide_account_existence_and_throttle_duplicate_mail(): void
@@ -90,5 +90,29 @@ class PasswordResetTest extends TestCase
             $this->post(route('password.email'), ['email' => 'nobody@example.com'])->assertRedirect();
         }
         $this->post(route('password.email'), ['email' => 'nobody@example.com'])->assertStatus(429);
+    }
+
+    public function test_link_expires_after_sixty_minutes_even_if_form_was_already_open(): void
+    {
+        $user = User::factory()->create();
+        $original = $user->password;
+        $token = Password::createToken($user);
+        $url = route('password.reset', ['token' => $token, 'email' => $user->email]);
+        $this->get($url)->assertOk()->assertSee('Simpan kata laluan')->assertHeader('Cache-Control', 'no-store, private');
+        $this->travel(60)->minutes();
+        $this->travel(1)->seconds();
+        $this->get($url)->assertStatus(410)->assertSee('Mohon pautan baharu')->assertDontSee('Simpan kata laluan');
+        $this->post(route('password.update'), ['token' => $token, 'email' => $user->email, 'password' => 'NewPassword123!', 'password_confirmation' => 'NewPassword123!'])->assertSessionHasErrors('email');
+        $this->assertSame($original, $user->fresh()->password);
+    }
+
+    public function test_used_or_replaced_link_cannot_display_reset_form(): void
+    {
+        $user = User::factory()->create();
+        $oldToken = Password::createToken($user);
+        $token = Password::createToken($user);
+        $this->get(route('password.reset', ['token' => $oldToken, 'email' => $user->email]))->assertStatus(410);
+        $this->post(route('password.update'), ['token' => $token, 'email' => $user->email, 'password' => 'NewPassword123!', 'password_confirmation' => 'NewPassword123!'])->assertRedirect(route('login'));
+        $this->get(route('password.reset', ['token' => $token, 'email' => $user->email]))->assertStatus(410);
     }
 }

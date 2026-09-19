@@ -53,4 +53,15 @@ class WelcomeEmailTest extends TestCase
         $this->assertSame('receipts', $job->queue);
         $this->assertStringNotContainsString('Example12345!', $job->payload);
     }
+
+    public function test_worker_can_deliver_queued_welcome_message(): void
+    {
+        config(['mail.mailers.receipts' => ['transport' => 'array']]);
+        $this->post('/register', $this->registration())->assertRedirect(route('login'));
+        app('queue')->connection('database')->pop('receipts')->fire();
+        $messages = Mail::mailer('receipts')->getSymfonyTransport()->messages();
+        $this->assertCount(1, $messages);
+        $this->assertStringContainsString('Pelanggan Contoh', $messages->first()->getOriginalMessage()->getHtmlBody());
+        $this->assertDatabaseCount('jobs', 0);
+    }
 }

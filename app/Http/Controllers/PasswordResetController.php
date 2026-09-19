@@ -39,7 +39,12 @@ class PasswordResetController extends Controller
 
     public function edit(Request $request, string $token): Response
     {
-        return response()->view('auth.reset-password', ['token' => $token, 'email' => $request->query('email', '')])
+        $email = $request->query('email');
+        $email = is_string($email) ? strtolower(trim($email)) : '';
+        $user = filter_var($email, FILTER_VALIDATE_EMAIL) ? User::where('email', $email)->first() : null;
+        $valid = $user && Password::tokenExists($user, $token);
+
+        return response()->view($valid ? 'auth.reset-password' : 'auth.reset-password-expired', ['token' => $token, 'email' => $email], $valid ? 200 : 410)
             ->header('Referrer-Policy', 'no-referrer')->header('Cache-Control', 'no-store');
     }
 

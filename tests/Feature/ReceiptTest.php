@@ -117,4 +117,16 @@ class ReceiptTest extends TestCase
         $this->assertDatabaseCount('jobs', 0);
         $this->assertDatabaseCount('receipts', 0);
     }
+
+    public function test_worker_delivers_payment_receipt_and_records_sent_status(): void
+    {
+        config(['mail.mailers.receipts' => ['transport' => 'array']]);
+        $card = Invitation::factory()->awaitingPayment()->create();
+        $this->actingAs($card->user)->post(route('payments.simulate', $card))->assertRedirect();
+        app('queue')->connection('database')->pop('receipts')->fire();
+        $this->assertCount(1, Mail::mailer('receipts')->getSymfonyTransport()->messages());
+        $this->assertSame('sent', Receipt::sole()->email_status);
+        $this->assertNotNull(Receipt::sole()->emailed_at);
+        $this->assertDatabaseCount('jobs', 0);
+    }
 }

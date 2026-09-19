@@ -39,7 +39,9 @@ if (page) {
         document.getElementById('text-bottom').classList.add('show-text');
         document.getElementById('home').classList.add('border-b-8', 'border-green-main');
         document.querySelectorAll('.bunga-daun').forEach(flower => flower.classList.add('bunga-muncul'));
-        document.getElementById('bottom-nav').classList.add('nav-show');
+        const navigation = document.getElementById('bottom-nav');
+        navigation.classList.remove('translate-y-full', 'opacity-0');
+        navigation.classList.add('nav-show');
         musicControl.classList.remove('opacity-0', 'pointer-events-none');
         musicControl.classList.add('opacity-100');
         playMusic();
